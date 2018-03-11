@@ -6,11 +6,11 @@ module.exports = function() {
             rules: [
               {
                 test: /\.js$/,
-                exclude: path.join(__dirname, 'node_modules/'),
+                exclude: path.join(__dirname, '../node_modules/'),
                 use: {
                   loader: 'babel-loader',
                   options: {
-                    cacheDirectory: path.join(__dirname,'node_modules/.cache/babel-loader'),
+                    cacheDirectory: path.join(__dirname,'../node_modules/.cache/babel-loader'),
                     presets: ['babel-preset-env'],
                   }
                 }

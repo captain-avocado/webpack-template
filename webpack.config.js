@@ -15,6 +15,7 @@ const images = require('./webpack/images');
 const lintCSS = require('./webpack/css.lint');
 const lintJS = require('./webpack/js.lint');
 const babel = require('./webpack/babel');
+const providePlugin = require('./webpack/js.provide'); 
 
 const paths = {
     src: path.join(__dirname, 'src/'),
