@@ -5,6 +5,7 @@ const merge = require('webpack-merge');
 const pug = require('./webpack/pug');
 const devserver = require('./webpack/devserver');
 const sass = require('./webpack/sass');
+const css = require('./webpack/css');
 
 const paths = {
     src: path.join(__dirname, 'src/'),
@@ -45,7 +46,8 @@ module.exports = function(env) {
         return merge([
             common,
             devserver(),
-            sass()
+            sass(),
+            css()
         ])
     }
 };

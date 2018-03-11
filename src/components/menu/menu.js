@@ -1,4 +1,5 @@
 import './menu.scss';
+import 'normalize.css';
 
 export default function(array, className) {
     let menu = document.createElement('ul');
