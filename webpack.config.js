@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const cleanWebpackPlugin = require('clean-webpack-plugin');
+const optimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const merge = require('webpack-merge');
 
 const pug = require('./webpack/pug');
@@ -10,6 +12,8 @@ const css = require('./webpack/css');
 const extractCSS = require('./webpack/css.extract')
 const uglifyJS = require('./webpack/js.uglify');
 const images = require('./webpack/images'); 
+const lintCSS = require('./webpack/css.lint');
+const lintJS = require('./webpack/js.lint');
 
 const paths = {
     src: path.join(__dirname, 'src/'),
@@ -27,6 +31,7 @@ const common = merge([
             filename: 'js/[name].js'
         },
         plugins: [
+            new cleanWebpackPlugin('dist'),
             new htmlWebpackPlugin({
                 filename: 'index.html',
                 chunks: ['index', 'common'],
@@ -43,11 +48,13 @@ const common = merge([
             new webpack.ProvidePlugin({
                 $: 'jquery',
                 jQuery: 'jquery'
-            })
+            }),
         ]
     },
     pug(),
-    images()
+    images(),
+    lintCSS(),
+    lintJS()
 ]);
 
 module.exports = function(env) {
@@ -55,7 +62,7 @@ module.exports = function(env) {
         return merge([
             common,
             extractCSS(),
-            uglifyJS()
+            uglifyJS(),
         ]);
     } 
     if (env === 'development') {

@@ -1,4 +1,5 @@
 const extractTextPlugin = require('extract-text-webpack-plugin');
+const optimizeAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = function(paths) {
     return {
@@ -27,7 +28,11 @@ module.exports = function(paths) {
             ]
         },
         plugins: [
-            new extractTextPlugin('./css/[name].css')
+            new extractTextPlugin('./css/[name].css'),
+            new optimizeAssetsPlugin({
+                cssProcessor: require('cssnano'),
+                cssProcessorOptions: { discardComments: { removeAll: true } }
+            })
         ]
     }
 };
