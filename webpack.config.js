@@ -15,7 +15,7 @@ const images = require('./webpack/images');
 const lintCSS = require('./webpack/css.lint');
 const lintJS = require('./webpack/js.lint');
 const babel = require('./webpack/babel');
-const providePlugin = require('./webpack/js.provide'); 
+const provideJS = require('./webpack/js.provide'); 
 
 const paths = {
     src: path.join(__dirname, 'src/'),
@@ -47,12 +47,9 @@ const common = merge([
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common'
             }),
-            new webpack.ProvidePlugin({
-                $: 'jquery',
-                jQuery: 'jquery'
-            }),
         ]
     },
+    provideJS(),
     pug(),
     images(),
     lintCSS(),
