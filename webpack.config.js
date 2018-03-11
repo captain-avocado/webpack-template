@@ -14,6 +14,7 @@ const uglifyJS = require('./webpack/js.uglify');
 const images = require('./webpack/images'); 
 const lintCSS = require('./webpack/css.lint');
 const lintJS = require('./webpack/js.lint');
+const babel = require('./webpack/babel');
 
 const paths = {
     src: path.join(__dirname, 'src/'),
@@ -62,6 +63,7 @@ module.exports = function(env) {
         return merge([
             common,
             extractCSS(),
+            babel(),
             uglifyJS(),
         ]);
     } 
