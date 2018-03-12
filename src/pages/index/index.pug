@@ -7,7 +7,7 @@ block content
         .welcome
             .welcome__info
                 .welcome__about
-                    img(src="images/avatar.jpg").welcome__avatar
+                    img(src=require('./avatar.jpg')).welcome__avatar
                     .welcome__text
                         .welcome__name Артем Калоев 
                         .welcome__site Личный сайт веб-разработчика
@@ -22,9 +22,9 @@ block content
             .welcome__buttons
                 ul.buttons
                     li.buttons__item
-                        a(href='#').buttons__link.buttons__link_work Мои работы
+                        a(href='#').button.button_works Мои работы
                     li.buttons__item
-                        a(href='#').buttons__link.buttons__link_about Обо мне
+                        a(href='#').button.button_about Обо мне
                     li.buttons__item
-                        a(href='#').buttons__link.buttons__link_blog Блог
+                        a(href='#').button.button_blog Блог
         .credits © Артем Калоев | Создано с любовью в Loftscool | 2018
