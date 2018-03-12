@@ -1,8 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const htmlWebpackPlugin = require('html-webpack-plugin');
 const cleanWebpackPlugin = require('clean-webpack-plugin');
-const optimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const merge = require('webpack-merge');
 
 const pug = require('./webpack/pug');
@@ -17,6 +15,7 @@ const lintJS = require('./webpack/js.lint');
 const babel = require('./webpack/babel');
 const provideJS = require('./webpack/js.provide'); 
 const fonts = require('./webpack/fonts');
+const html = require('./webpack/html');
 
 const paths = {
     src: path.join(__dirname, 'src/'),
@@ -27,7 +26,9 @@ const common = merge([
     {
         entry: {
             'index': paths.src + 'pages/index/index.js',
-            'blog': paths.src + 'pages/blog/blog.js'
+            'blog': paths.src + 'pages/blog/blog.js',
+            'works': paths.src + 'pages/works/works.js',
+            'about': paths.src + 'pages/about/about.js'
         },
         output: {
             path: paths.dist,
@@ -35,21 +36,12 @@ const common = merge([
         },
         plugins: [
             new cleanWebpackPlugin('dist'),
-            new htmlWebpackPlugin({
-                filename: 'index.html',
-                chunks: ['index', 'common'],
-                template: paths.src + 'pages/index/index.pug'
-            }),
-            new htmlWebpackPlugin({
-                filename: 'blog.html',
-                chunks: ['blog', 'common'],
-                template: paths.src + 'pages/blog/blog.pug'
-            }),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common'
             }),
         ]
     },
+    html(paths),
     provideJS(),
     pug(),
     images(),
