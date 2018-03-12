@@ -2,5 +2,29 @@ extends ../base
 block head
     title Авторизация
 block content
-    h1 Авторизация
-    //- img(src=require("./settings.svg") width="100")
+    .wrapper
+        a(href="#").auth Авторизоваться
+        .welcome
+            .welcome__info
+                .welcome__about
+                    img(src="images/avatar.jpg").welcome__avatar
+                    .welcome__text
+                        .welcome__name Артем Калоев 
+                        .welcome__site Личный сайт веб-разработчика
+                .welcome__socials
+                    ul.socials
+                        li.socials__item
+                            a(href='#').socials__link vk
+                        li.socials__item
+                            a(href='#').socials__link gh
+                        li.socials__item
+                            a(href='#').socials__link li
+            .welcome__buttons
+                ul.buttons
+                    li.buttons__item
+                        a(href='#').buttons__link.buttons__link_work Мои работы
+                    li.buttons__item
+                        a(href='#').buttons__link.buttons__link_about Обо мне
+                    li.buttons__item
+                        a(href='#').buttons__link.buttons__link_blog Блог
+        .credits © Артем Калоев | Создано с любовью в Loftscool | 2018
