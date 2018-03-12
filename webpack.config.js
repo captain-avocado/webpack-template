@@ -16,6 +16,7 @@ const lintCSS = require('./webpack/css.lint');
 const lintJS = require('./webpack/js.lint');
 const babel = require('./webpack/babel');
 const provideJS = require('./webpack/js.provide'); 
+const fonts = require('./webpack/fonts');
 
 const paths = {
     src: path.join(__dirname, 'src/'),
@@ -52,6 +53,7 @@ const common = merge([
     provideJS(),
     pug(),
     images(),
+    fonts(),
     lintCSS(),
     lintJS()
 ]);
