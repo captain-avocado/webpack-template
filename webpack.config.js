@@ -16,6 +16,7 @@ const babel = require('./webpack/babel');
 const provideJS = require('./webpack/js.provide'); 
 const fonts = require('./webpack/fonts');
 const html = require('./webpack/html');
+const imagemin = require('./webpack/imagemin');
 
 const paths = {
     src: path.join(__dirname, 'src/'),
@@ -54,6 +55,7 @@ module.exports = function(env) {
     if (env === 'production') {
         return merge([
             common,
+            imagemin(),
             extractCSS(),
             babel(),
             uglifyJS(),
